@@ -35,6 +35,7 @@ calculator/
 └── static/
     ├── style.css
     └── script.js
+```
 
 ### ⚙️ Installation and Setup 
 
