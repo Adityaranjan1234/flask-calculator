@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+  <main class="calculator" aria-label="Calculator">
+    <header class="topbar">
+      <button class="icon-btn" id="history-toggle" aria-label="Open calculation history" title="History">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+      </button>
+      <div class="top-actions">
+        <button class="icon-btn" id="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+        </button>
+        <button class="icon-btn" id="menu-toggle" aria-label="Open menu" aria-expanded="false" title="More options">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5" fill="currentColor" stroke="none"></circle><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"></circle><circle cx="19" cy="12" r="1.5" fill="currentColor" stroke="none"></circle></svg>
+        </button>
+      </div>
+      <div class="menu" id="menu" hidden>
+        <button type="button" id="menu-history">Calculation history</button>
+        <button type="button" id="menu-theme">Switch theme</button>
+        <button type="button" id="menu-clear">Clear calculator</button>
+      </div>
+    </header>
+
+    <section class="screen" aria-live="polite">
+      <div class="expression" id="expression"></div>
+      <output class="display" id="display">0</output>
+      <p class="error" id="error" role="status"></p>
+    </section>
+
+    <section class="keypad" aria-label="Calculator keys">
+      <button class="function" data-action="clear">C</button>
+      <button class="function" data-action="sign">+/−</button>
+      <button class="function" data-action="percent">%</button>
+      <button class="operator" data-operator="÷" aria-label="Divide">÷</button>
+
+      <button data-digit="7">7</button>
+      <button data-digit="8">8</button>
+      <button data-digit="9">9</button>
+      <button class="operator" data-operator="×" aria-label="Multiply">×</button>
+
+      <button data-digit="4">4</button>
+      <button data-digit="5">5</button>
+      <button data-digit="6">6</button>
+      <button class="operator" data-operator="−" aria-label="Subtract">−</button>
+
+      <button data-digit="1">1</button>
+      <button data-digit="2">2</button>
+      <button data-digit="3">3</button>
+      <button class="operator" data-operator="+" aria-label="Add">+</button>
+
+      <button class="function" data-action="backspace" aria-label="Delete last digit">⌫</button>
+      <button data-digit="0">0</button>
+      <button data-action="decimal">.</button>
+      <button class="equals" data-action="equals">=</button>
+    </section>
+
+    <button class="advanced-toggle" id="advanced-toggle" type="button" aria-expanded="false" aria-controls="advanced-functions">
+      <span class="advanced-icon" aria-hidden="true">ƒx</span>
+      <span class="advanced-label">More functions</span>
+      <span class="advanced-chevron" aria-hidden="true">⌄</span>
+    </button>
+    <section class="extras" id="advanced-functions" aria-label="Additional operations" hidden>
+      <button data-extra="square">x²</button>
+      <button data-extra="cube">x³</button>
+      <button data-extra="square_root">√x</button>
+      <button data-extra="cube_root">∛x</button>
+      <button data-extra="power">xʸ</button>
+      <button data-extra="modulus">mod</button>
+      <button data-extra="percentage">a% of b</button>
+    </section>
+    <p class="hint">Keyboard supported · Use ⋯ for history and options</p>
+  </main>
+
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="history-panel" id="history-panel" aria-label="Calculation history" aria-hidden="true">
+    <div class="history-heading">
+      <div><h2>History</h2><p>Your recent calculations</p></div>
+      <button class="icon-btn close-history" id="history-close" aria-label="Close history">×</button>
+    </div>
+    <div class="history-list" id="history-list"><p class="empty-history">No calculations yet.</p></div>
+    <button class="clear-history" id="clear-history">Clear history</button>
+  </aside>
+</body>
+</html>
