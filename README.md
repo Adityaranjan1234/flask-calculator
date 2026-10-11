@@ -65,7 +65,12 @@ python app.py
 
 ### 5. Open the calculator
 
-Visit http://127.0.0.1:5000
+Once the Flask application is running, open
+http://127.0.0.1:5000 in your browser.
+
+**Note:** This address works locally on your computer.
+To make the calculator accessible to everyone online,
+the application must be deployed to a hosting service.
 
 ## 👨‍💻 Author
 
